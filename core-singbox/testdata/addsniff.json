@@ -1,0 +1,34 @@
+{
+  "dns": {
+    "final": "remote",
+    "servers": [
+      {
+        "address": "udp://223.5.5.5",
+        "detour": "DIRECT",
+        "tag": "remote"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "listen_port": 7897,
+      "sniff": true,
+      "tag": "mixed-in",
+      "type": "mixed"
+    }
+  ],
+  "log": {
+    "level": "debug"
+  },
+  "outbounds": [
+    {
+      "tag": "DIRECT",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "DIRECT"
+  }
+}

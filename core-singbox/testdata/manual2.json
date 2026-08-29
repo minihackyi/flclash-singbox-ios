@@ -1,0 +1,200 @@
+{
+  "outbounds": [
+    {
+      "tag": "DIRECT",
+      "type": "direct"
+    },
+    {
+      "tag": "REJECT",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    },
+    {
+      "tag": "http-local",
+      "server_port": 18080,
+      "type": "http",
+      "server": "127.0.0.1"
+    },
+    {
+      "tag": "socks-local",
+      "server_port": 18081,
+      "type": "socks",
+      "server": "127.0.0.1"
+    },
+    {
+      "tag": "ss-sample",
+      "type": "shadowsocks",
+      "method": "aes-256-gcm",
+      "server": "192.0.2.1",
+      "password": "test-password",
+      "server_port": 8388
+    },
+    {
+      "security": "auto",
+      "tag": "vmess-sample",
+      "alter_id": 0,
+      "type": "vmess",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      },
+      "transport": {
+        "path": "/path",
+        "headers": {
+          "Host": "example.com"
+        },
+        "type": "ws"
+      },
+      "server": "192.0.2.2",
+      "uuid": "b831381d-6324-4d53-ad4f-8cda48b30811",
+      "server_port": 443
+    },
+    {
+      "tag": "trojan-sample",
+      "server_port": 443,
+      "type": "trojan",
+      "password": "trojan-pass",
+      "server": "192.0.2.3"
+    },
+    {
+      "tag": "PROXY",
+      "outbounds": [
+        "http-local",
+        "socks-local",
+        "ss-sample",
+        "vmess-sample",
+        "trojan-sample"
+      ],
+      "type": "selector"
+    },
+    {
+      "interval": "300s",
+      "tag": "AUTO",
+      "url": "https://www.gstatic.com/generate_204",
+      "outbounds": [
+        "http-local",
+        "socks-local"
+      ],
+      "type": "urltest"
+    },
+    {
+      "tag": "GLOBAL",
+      "outbounds": [
+        "PROXY",
+        "AUTO",
+        "http-local",
+        "socks-local",
+        "ss-sample",
+        "vmess-sample",
+        "trojan-sample",
+        "DIRECT"
+      ],
+      "type": "selector"
+    }
+  ],
+  "experimental": {
+    "cache_file": {
+      "enabled": false
+    }
+  },
+  "dns": {
+    "final": "dns-remote-1",
+    "strategy": "ipv4_only",
+    "servers": [
+      {
+        "detour": "DIRECT",
+        "address": "udp://223.5.5.5",
+        "tag": "dns-bootstrap-1"
+      },
+      {
+        "address": "udp://223.5.5.5",
+        "tag": "dns-remote-1"
+      },
+      {
+        "address_strategy": "prefer_ipv4",
+        "address": "https://doh.pub/dns-query",
+        "address_resolver": "dns-bootstrap-1",
+        "tag": "dns-remote-2"
+      },
+      {
+        "detour": "DIRECT",
+        "address": "local",
+        "tag": "local"
+      }
+    ]
+  },
+  "route": {
+    "final": "PROXY",
+    "auto_detect_interface": true,
+    "rules": [
+      {
+        "outbound": "dns-out",
+        "protocol": "dns"
+      },
+      {
+        "outbound": "DIRECT",
+        "domain_suffix": [
+          "local"
+        ]
+      },
+      {
+        "outbound": "DIRECT",
+        "domain_suffix": [
+          "baidu.com"
+        ]
+      },
+      {
+        "outbound": "DIRECT",
+        "domain_suffix": [
+          "qq.com"
+        ]
+      },
+      {
+        "outbound": "DIRECT",
+        "ip_cidr": [
+          "127.0.0.0/8"
+        ]
+      },
+      {
+        "outbound": "DIRECT",
+        "ip_cidr": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "127.0.0.0/8",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.88.99.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "224.0.0.0/3",
+          "::/127",
+          "fc00::/7",
+          "fe80::/10",
+          "ff00::/8"
+        ]
+      }
+    ]
+  },
+  "log": {
+    "level": "debug",
+    "timestamp": true
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "listen_port": 7897,
+      "tag": "mixed-in",
+      "type": "mixed",
+      "sniff": true,
+      "sniff_override_destination": false
+    }
+  ]
+}

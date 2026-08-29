@@ -1,0 +1,16 @@
+{
+  "log": {"level": "debug"},
+  "dns": {
+    "servers": [
+      {"tag": "local", "address": "local", "detour": "DIRECT"}
+    ],
+    "final": "local"
+  },
+  "inbounds": [
+    {"type": "mixed", "tag": "mixed-in", "listen": "127.0.0.1", "listen_port": 7897, "sniff": true}
+  ],
+  "outbounds": [
+    {"type": "direct", "tag": "DIRECT"}
+  ],
+  "route": {"final": "DIRECT", "auto_detect_interface": true}
+}

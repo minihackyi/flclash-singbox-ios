@@ -1,0 +1,22 @@
+== core connected ==
+[OK] initClash -> true
+[OK] validateConfig -> 
+[OK] getConfig keys count: 10
+[OK] setupConfig -> 
+[OK] startListener
+[OK] getProxies: 2 groups + GLOBAL, 10 proxies
+     group PROXY                type=select now=AUTO members=[AUTO http-local socks-local ss-sample vmess-sample trojan-sample]
+     group AUTO                 type=url-test now=http-local members=[http-local socks-local]
+[OK] getTraffic -> {"down":0,"up":0}
+[OK] getConnections -> {"connections":[],"downloadTotal":0,"memory":185327616,"uploadTotal":0} 
+[OK] getMemory -> 48301440
+[OK] request through core: status=501 (attempt 1)
+[OK] changeProxy PROXY -> AUTO
+[OK] asyncTestDelay DIRECT -> {"url":"https://www.gstatic.com/generate_204","name":"DIRECT","value":301}
+== collecting events for 3s ==
+     [log] map[LogLevel:info Payload:[4114630915 0ms] inbound/mixed[mixed-in]: inbound connection from 127.0.0....
+     [log] map[LogLevel:info Payload:[4114630915 0ms] inbound/mixed[mixed-in]: inbound connection to www.qq.com...
+     [log] map[LogLevel:debug Payload:[4114630915 0ms] router: match[0] => sniff]
+[OK] events: 27 logs, 0 delays, 1 requests
+[OK] shutdown
+== ALL SMOKE TESTS PASSED ==

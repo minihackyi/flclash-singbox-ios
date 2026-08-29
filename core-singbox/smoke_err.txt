@@ -1,0 +1,35 @@
++0800 2026-08-29 23:52:13 [36mINFO[0m network: updated default interface WLAN, index 25
++0800 2026-08-29 23:52:13 [36mINFO[0m inbound/mixed[mixed-in]: tcp server started at 127.0.0.1:7897
++0800 2026-08-29 23:52:13 [36mINFO[0m outbound/http[http-local]: outbound connection to www.gstatic.com:443
++0800 2026-08-29 23:52:13 [36mINFO[0m outbound/socks[socks-local]: outbound connection to www.gstatic.com:443
++0800 2026-08-29 23:52:13 [36mINFO[0m clash-api: restful api listening at 127.0.0.1:65285
++0800 2026-08-29 23:52:13 [36mINFO[0m sing-box started (0.17s)
++0800 2026-08-29 23:52:13 [37mDEBUG[0m outbound/urltest[AUTO]: outbound http-local unavailable: dial tcp 127.0.0.1:18080: connectex: No connection could be made because the target machine actively refused it.
++0800 2026-08-29 23:52:13 [37mDEBUG[0m outbound/urltest[AUTO]: outbound socks-local unavailable: dial tcp 127.0.0.1:18081: connectex: No connection could be made because the target machine actively refused it.
++0800 2026-08-29 23:52:13 [36mINFO[0m [[38;5;174m2991119774[0m 0ms] inbound/mixed[mixed-in]: inbound connection from 127.0.0.1:65292
++0800 2026-08-29 23:52:13 [36mINFO[0m [[38;5;174m2991119774[0m 0ms] inbound/mixed[mixed-in]: inbound connection to www.qq.com:80
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 0ms] router: match[0] => sniff
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 0ms] router: sniffed protocol: http, domain: www.qq.com
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 0ms] router: match[4] domain_suffix=qq.com => route(DIRECT)
++0800 2026-08-29 23:52:13 [36mINFO[0m [[38;5;174m2991119774[0m 0ms] outbound/direct[DIRECT]: outbound connection to www.qq.com:80
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 0ms] dns: lookup domain www.qq.com
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 23ms] dns: exchanged www.qq.com NOERROR 26
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 23ms] dns: exchanged CNAME www.qq.com. 26 IN CNAME ins-r23tsuuf.ias.tencent-cloud.net.
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 23ms] dns: exchanged A ins-r23tsuuf.ias.tencent-cloud.net. 26 IN A 121.14.77.221
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 23ms] dns: exchanged A ins-r23tsuuf.ias.tencent-cloud.net. 26 IN A 121.14.77.201
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 23ms] dns: lookup succeed for www.qq.com: 121.14.77.221 121.14.77.201
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 131ms] inbound/mixed[mixed-in]: connection closed: read http request: read tcp 127.0.0.1:7897->127.0.0.1:65292: use of closed network connection
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;174m2991119774[0m 132ms] connection: connection upload finished
++0800 2026-08-29 23:52:13 [36mINFO[0m [[38;5;172m2723512220[0m 0ms] inbound/mixed[mixed-in]: inbound connection from 127.0.0.1:65294
++0800 2026-08-29 23:52:13 [36mINFO[0m [[38;5;172m2723512220[0m 0ms] inbound/mixed[mixed-in]: inbound connection to www.qq.com:443
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;172m2723512220[0m 0ms] router: match[0] => sniff
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;172m2723512220[0m 3ms] router: sniffed protocol: tls, domain: www.qq.com
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;172m2723512220[0m 3ms] router: match[4] domain_suffix=qq.com => route(DIRECT)
++0800 2026-08-29 23:52:13 [36mINFO[0m [[38;5;172m2723512220[0m 3ms] outbound/direct[DIRECT]: outbound connection to www.qq.com:443
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;172m2723512220[0m 3ms] dns: lookup domain www.qq.com
++0800 2026-08-29 23:52:13 [37mDEBUG[0m [[38;5;172m2723512220[0m 3ms] dns: lookup succeed for www.qq.com: 121.14.77.221 121.14.77.201
++0800 2026-08-29 23:52:13 [36mINFO[0m outbound/direct[DIRECT]: outbound connection to www.gstatic.com:443
++0800 2026-08-29 23:52:13 [37mDEBUG[0m dns: lookup domain www.gstatic.com
++0800 2026-08-29 23:52:13 [37mDEBUG[0m dns: exchanged www.gstatic.com NOERROR 154
++0800 2026-08-29 23:52:13 [37mDEBUG[0m dns: exchanged A www.gstatic.com. 154 IN A 58.63.233.98
++0800 2026-08-29 23:52:13 [37mDEBUG[0m dns: lookup succeed for www.gstatic.com: 58.63.233.98

@@ -1,0 +1,61 @@
+{
+  "dns": {
+    "final": "remote",
+    "servers": [
+      {
+        "address": "udp://223.5.5.5",
+        "detour": "DIRECT",
+        "tag": "remote"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "listen_port": 7897,
+      "tag": "mixed-in",
+      "type": "mixed"
+    }
+  ],
+  "log": {
+    "level": "debug"
+  },
+  "outbounds": [
+    {
+      "tag": "DIRECT",
+      "type": "direct"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "DIRECT",
+    "rules": [
+      {
+        "outbound": "dns-out",
+        "protocol": "dns"
+      },
+      {
+        "domain_suffix": [
+          "qq.com"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "ip_cidr": [
+          "127.0.0.0/8"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "ip_cidr": [
+          "many..."
+        ],
+        "outbound": "DIRECT"
+      }
+    ]
+  }
+}

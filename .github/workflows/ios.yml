@@ -1,0 +1,52 @@
+name: Build iOS ipa (unsigned)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Setup Go proxy
+        run: go env -w GOPROXY=https://goproxy.cn,direct GOPRIVATE=**
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.2'
+          channel: stable
+          cache: true
+
+      - name: Pub get
+        run: flutter pub get
+
+      - name: Build sing-box core (c-archive, arm64)
+        run: bash tool/build_ios_core.sh
+
+      - name: Build ipa (no codesign)
+        run: flutter build ipa --release --no-codesign
+
+      - name: Pack unsigned ipa
+        run: |
+          cd build/ios/archive
+          mkdir -p Payload
+          cp -r Runner.xcarchive/Products/Applications/Runner.app Payload/
+          zip -qry FlClash-unsigned.ipa Payload
+          ls -lh FlClash-unsigned.ipa
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FlClash-ios-unsigned-ipa
+          path: build/ios/archive/FlClash-unsigned.ipa
