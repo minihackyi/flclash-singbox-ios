@@ -16,10 +16,12 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.23'
+          go-version: '1.24'
 
       - name: Setup Go proxy
-        run: go env -w GOPROXY=https://goproxy.cn,direct GOPRIVATE=**
+        run: |
+          go env -w GOPROXY=https://proxy.golang.org,direct
+          go version
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -32,7 +34,11 @@ jobs:
         run: flutter pub get
 
       - name: Build sing-box core (c-archive, arm64)
-        run: bash tool/build_ios_core.sh
+        run: |
+          cd core-singbox
+          go list -m github.com/sagernet/sing-box github.com/sagernet/sing-tun github.com/sagernet/gvisor
+          cd ..
+          bash tool/build_ios_core.sh
 
       - name: Build ipa (no codesign)
         run: flutter build ipa --release --no-codesign
