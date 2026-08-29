@@ -19,13 +19,14 @@ import (
 	box "github.com/sagernet/sing-box"
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/include"
-	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
 	tun "github.com/sagernet/sing-tun"
+	"github.com/sagernet/sing/common/logger"
 	"github.com/sagernet/sing/service"
 	"golang.org/x/sys/unix"
 )
 
+/*
 #include <stdlib.h>
 int iosOpenTunBridge(const char* settingsJson);
 int iosBindInterfaceBridge(int fd);
@@ -53,7 +54,10 @@ func (p *iosPlatform) UsePlatformAutoDetectInterfaceControl() bool {
 }
 
 func (p *iosPlatform) AutoDetectInterfaceControl(fd int) error {
-	return int(C.iosBindInterfaceBridge(C.int(fd)))
+	if res := int(C.iosBindInterfaceBridge(C.int(fd))); res != 0 {
+		return errors.New("bind interface failed")
+	}
+	return nil
 }
 
 func (p *iosPlatform) UsePlatformInterface() bool {
@@ -79,7 +83,7 @@ func (p *iosPlatform) OpenInterface(options *tun.Options, platformOptions option
 	settings := iosTunSettings{
 		Inet4Address:   prefixesToStrings(options.Inet4Address),
 		Inet6Address:   prefixesToStrings(options.Inet6Address),
-		MTU:            options.MTU,
+		MTU:            int(options.MTU),
 		Inet4RouteAddr: prefixesToStrings(routeRanges),
 		DNSServer:      iosTunDNSServer(options),
 	}
