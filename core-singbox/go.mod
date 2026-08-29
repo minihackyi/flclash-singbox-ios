@@ -9,6 +9,8 @@ require (
 	gopkg.in/yaml.v3 v3.0.1
 )
 
+require github.com/sagernet/gvisor v0.0.0-20250811.0-sing-box-mod.1 // indirect
+
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/ajg/form v1.5.1 // indirect
@@ -100,7 +102,6 @@ require (
 	github.com/sagernet/cronet-go/lib/windows_amd64 v0.0.0-20260807161529-8d42107dcdfc // indirect
 	github.com/sagernet/cronet-go/lib/windows_arm64 v0.0.0-20260807161529-8d42107dcdfc // indirect
 	github.com/sagernet/fswatch v0.1.2 // indirect
-	github.com/sagernet/gvisor v0.0.0-20241123041152-536d05261cff // indirect
 	github.com/sagernet/netlink v0.0.0-20240612041022-b9a21c07ac6a // indirect
 	github.com/sagernet/nftables v0.3.0-mod.2 // indirect
 	github.com/sagernet/quic-go v0.59.0-sing-box-mod.4 // indirect
@@ -110,7 +111,7 @@ require (
 	github.com/sagernet/sing-shadowsocks v0.2.8 // indirect
 	github.com/sagernet/sing-shadowsocks2 v0.2.1 // indirect
 	github.com/sagernet/sing-shadowtls v0.2.1 // indirect
-	github.com/sagernet/sing-tun v0.8.14 // indirect
+	github.com/sagernet/sing-tun v0.8.14
 	github.com/sagernet/sing-vmess v0.2.8-0.20250909125414-3aed155119a1 // indirect
 	github.com/sagernet/smux v1.5.50-sing-box-mod.1 // indirect
 	github.com/sagernet/tailscale v1.92.4-sing-box-1.13-mod.10 // indirect
@@ -142,7 +143,7 @@ require (
 	golang.org/x/net v0.50.0 // indirect
 	golang.org/x/oauth2 v0.34.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
-	golang.org/x/sys v0.41.0 // indirect
+	golang.org/x/sys v0.41.0
 	golang.org/x/term v0.40.0 // indirect
 	golang.org/x/text v0.34.0 // indirect
 	golang.org/x/time v0.11.0 // indirect
