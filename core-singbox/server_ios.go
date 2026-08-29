@@ -12,6 +12,11 @@ import (
 	"sync"
 )
 
+/*
+#include <stdlib.h>
+*/
+import "C"
+
 var (
 	listenerMu   sync.Mutex
 	tcpListener  net.Listener
