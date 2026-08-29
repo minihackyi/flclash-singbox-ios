@@ -13,3 +13,8 @@ func withIOSPlatform(ctx context.Context) context.Context {
 }
 
 func isIOSBuild() bool { return false }
+
+// defaultTunStack keeps desktop behavior (gvisor stack available via tags).
+func defaultTunStack() string {
+	return "gvisor"
+}

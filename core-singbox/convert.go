@@ -272,7 +272,7 @@ func buildInbounds(clash *ClashConfig) []map[string]any {
 		case "mixed":
 			tun["stack"] = "mixed"
 		default:
-			tun["stack"] = "gvisor"
+			tun["stack"] = defaultTunStack()
 		}
 		if device := asString(clash.Tun["device"]); device != "" {
 			tun["interface_name"] = device

@@ -18,7 +18,7 @@ OUT_DIR=../ios/PacketTunnel/Libs
 mkdir -p "$OUT_DIR"
 
 go build -buildmode=c-archive \
-  -tags "with_clash_api,with_tun,with_gvisor" \
+  -tags "with_clash_api,with_tun" \
   -ldflags "-w -s" \
   -o "$OUT_DIR/libclash.a" .
 

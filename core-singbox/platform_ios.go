@@ -208,6 +208,12 @@ func (p *iosPlatform) MyInterfaceAddress() []netip.Addr {
 
 var iosPlatformInstance = newIOSPlatform()
 
+// defaultTunStack: the NE-provided utun fd works with sing-tun's system
+// stack, which avoids pulling gvisor into the iOS build.
+func defaultTunStack() string {
+	return "system"
+}
+
 // withIOSPlatform registers the platform interface the same way libbox's
 // baseContext does, so the tun inbound routes through the NetworkExtension.
 func withIOSPlatform(ctx context.Context) context.Context {
