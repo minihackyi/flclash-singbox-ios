@@ -1,5 +1,8 @@
 name: Build iOS ipa (unsigned)
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   push:
@@ -34,11 +37,21 @@ jobs:
         run: flutter pub get
 
       - name: Build sing-box core (c-archive, arm64)
+        shell: bash
         run: |
-          cd core-singbox
-          go list -m github.com/sagernet/sing-box github.com/sagernet/sing-tun github.com/sagernet/gvisor
-          cd ..
-          bash tool/build_ios_core.sh
+          set -o pipefail
+          bash tool/build_ios_core.sh 2>&1 | tee core_build.log
+
+      - name: Publish core build log to repo
+        if: failure()
+        shell: bash
+        run: |
+          tail -c 60000 core_build.log > build-log.txt || true
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git add build-log.txt
+          git commit -m "ci: core build log [skip ci]" || true
+          git push || true
 
       - name: Build ipa (no codesign)
         run: flutter build ipa --release --no-codesign
