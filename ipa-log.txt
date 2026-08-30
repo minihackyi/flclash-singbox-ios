@@ -62,9 +62,9 @@ The following plugins do not support Swift Package Manager for ios:
   - rust_api
   - setup
 This will become an error in a future version of Flutter. Please contact the plugin maintainers to request Swift Package Manager adoption.
-Running pod install...                                             714ms
+Running pod install...                                           1,684ms
 Running Xcode build...                                          
-Xcode build done.                                           78.4s
+Xcode build done.                                           120.1s
 Failed to build iOS app
 ════════════════════════════════════════════════════════════════════════════════
 Building a deployable iOS app requires a selected Development Team with a 
