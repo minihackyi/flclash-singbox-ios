@@ -122,15 +122,11 @@ The following plugins do not support Swift Package Manager for ios:
   - rust_api
   - setup
 This will become an error in a future version of Flutter. Please contact the plugin maintainers to request Swift Package Manager adoption.
-Running pod install...                                           1,077ms
+Running pod install...                                           1,213ms
 Running Xcode build...                                          
-Xcode archive done.                                         13.7s
+Xcode archive done.                                         66.6s
 Failed to build iOS app
-Target Integrity (Xcode): The package product 'file-picker' requires minimum platform version 14.0 for the iOS platform, but this target supports 13.0
-
-To fix this error, increase your app's minimum platform version from 13.0 to at least 14.0 or remove the file-picker dependency.
-
-To increase your app's minimum platform version, follow these instructions:
-  https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers#how-to-use-a-swift-package-manager-flutter-plugin-that-requires-a-higher-os-version
+ARC Semantic Issue (Xcode): No visible @interface for 'NSProcessInfo' declares the selector 'isiOSAppOnVision'
+/Users/runner/.pub-cache/hosted/pub.dev/device_info_plus-13.1.0/ios/device_info_plus/Sources/device_info_plus/FPPDeviceInfoPlusPlugin.m:34:56
 
 Encountered error while archiving for device.
