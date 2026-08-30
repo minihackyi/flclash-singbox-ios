@@ -76,10 +76,27 @@ jobs:
           git commit -m "ci: ipa build log [skip ci]" || true
           git push || true
 
+      - name: Build extension explicitly (fallback)
+        if: always()
+        shell: bash
+        run: |
+          cd ios
+          xcodebuild -workspace Runner.xcworkspace -scheme PacketTunnel -configuration Release -sdk iphoneos -derivedDataPath ../build/ios/extdd CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build || true
+          cd ..
+          find build -name "PacketTunnel.appex" || true
+
       - name: Pack unsigned ipa
+        if: always()
         run: |
           mkdir -p build/payload/Payload
           cp -r build/ios/iphoneos/Runner.app build/payload/Payload/
+          APPEX=$(find build -name "PacketTunnel.appex" -type d | head -1)
+          if [ -n "$APPEX" ]; then
+            mkdir -p build/payload/Payload/Runner.app/PlugIns
+            cp -r "$APPEX" build/payload/Payload/Runner.app/PlugIns/
+          else
+            echo "WARNING: PacketTunnel.appex not found"
+          fi
           cd build/payload
           zip -qry ../FlClash-unsigned.ipa Payload
           ls -lh ../FlClash-unsigned.ipa
