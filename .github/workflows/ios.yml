@@ -52,11 +52,12 @@ jobs:
         if: failure()
         shell: bash
         run: |
-          tail -c 60000 core_build.log > build-log.txt || true
+          tail -c 100000 core_build.log > build-log.txt || true
           git config user.name "ci-bot"
           git config user.email "ci-bot@users.noreply.github.com"
           git add build-log.txt
           git commit -m "ci: core build log [skip ci]" || true
+          git pull --rebase origin main || true
           git push || true
 
       - name: Build iOS app (unsigned)
