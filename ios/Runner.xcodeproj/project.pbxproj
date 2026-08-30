@@ -134,15 +134,29 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
+				F10000000000000000000091 /* PacketTunnel */,
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
 			);
+			sourceTree = "<group>";
+		};
+		F10000000000000000000091 /* PacketTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000000000000F1 /* PacketTunnelProvider.swift */,
+				F100000000000000000000F5 /* PacketTunnel-Bridging-Header.h */,
+				F100000000000000000000F3 /* PacketTunnel.entitlements */,
+				F100000000000000000000F2 /* Info.plist */,
+				F100000000000000000000F6 /* libclash.a */,
+			);
+			path = PacketTunnel;
 			sourceTree = "<group>";
 		};
 		97C146EF1CF9000F007C117D /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
+				F10000000000000000000081 /* PacketTunnel.appex */,
 				331C8081294A63A400263BE5 /* RunnerTests.xctest */,
 			);
 			name = Products;
@@ -209,6 +223,24 @@
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F10000000000000000000071 /* PacketTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F100000000000000000000D1 /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
+			buildPhases = (
+				F100000000000000000000A1 /* Sources */,
+				F100000000000000000000B1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PacketTunnel;
+			packageProductDependencies = (
+			);
+			productName = PacketTunnel;
+			productReference = F10000000000000000000081 /* PacketTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -219,6 +251,9 @@
 				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
+					F10000000000000000000071 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					331C8080294A63A400263BE5 = {
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 97C146ED1CF9000F007C117D;
@@ -246,6 +281,7 @@
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
+				F10000000000000000000071 /* PacketTunnel */,
 				331C8080294A63A400263BE5 /* RunnerTests */,
 			);
 		};
