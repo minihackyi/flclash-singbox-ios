@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,6 +32,12 @@ jobs:
           flutter-version: '3.44.2'
           channel: stable
           cache: true
+
+      - name: Select newest Xcode
+        run: |
+          ls /Applications | grep Xcode || true
+          sudo xcode-select -s $(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          xcodebuild -version
 
       - name: Pub get
         run: flutter pub get
