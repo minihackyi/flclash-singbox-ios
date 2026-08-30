@@ -710,6 +710,10 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PacketTunnel/Libs",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/PacketTunnel/Libs",
 				);
@@ -743,6 +747,10 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PacketTunnel/Libs",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/PacketTunnel/Libs",
 				);
@@ -774,6 +782,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PacketTunnel/Libs",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/PacketTunnel/Libs",
