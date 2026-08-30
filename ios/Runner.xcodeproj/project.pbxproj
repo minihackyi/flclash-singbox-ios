@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F200000000000000000000A /* PacketTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F10000000000000000000081 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnEmbed, ); }; };
 		F1000000000000000000000A /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000000000000F1 /* PacketTunnelProvider.swift */; };
+		F1000000000000000000000C /* PacketTunnelBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000000000000FC /* PacketTunnelBridge.swift */; };
+		F1000000000000000000000D /* iosbridge.m in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000000000000FD /* iosbridge.m */; };
 		F1000000000000000000000B /* libclash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F100000000000000000000F6 /* libclash.a */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
@@ -81,6 +83,8 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F100000000000000000000F1 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		F100000000000000000000FC /* PacketTunnelBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelBridge.swift; sourceTree = "<group>"; };
+		F100000000000000000000FD /* iosbridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iosbridge.m; sourceTree = "<group>"; };
 		F100000000000000000000F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F100000000000000000000F3 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
 		F100000000000000000000F4 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				F100000000000000000000F1 /* PacketTunnelProvider.swift */,
+				F100000000000000000000FC /* PacketTunnelBridge.swift */,
+				F100000000000000000000FD /* iosbridge.m */,
 				F100000000000000000000F5 /* PacketTunnel-Bridging-Header.h */,
 				F100000000000000000000F3 /* PacketTunnel.entitlements */,
 				F100000000000000000000F2 /* Info.plist */,
@@ -366,6 +372,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1000000000000000000000A /* PacketTunnelProvider.swift in Sources */,
+				F1000000000000000000000C /* PacketTunnelBridge.swift in Sources */,
+				F1000000000000000000000D /* iosbridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
