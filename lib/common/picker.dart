@@ -17,11 +17,12 @@ class Picker {
       initialDirectory: await appPath.downloadDirPath,
       bytes: bytes,
     );
-    if (!system.isAndroid && path != null) {
-      final file = File(path);
+    final pathText = path?.toString();
+    if (!system.isAndroid && pathText != null) {
+      final file = File(pathText);
       await file.safeWriteAsBytes(bytes);
     }
-    return path;
+    return pathText;
   }
 
   Future<String?> saveFileWithPath(String fileName, String localPath) async {
@@ -36,7 +37,7 @@ class Picker {
       bytes: bytes,
     );
     await localFile.safeDelete();
-    return path;
+    return path?.toString();
   }
 
   Future<String?> pickerConfigQRCode() async {

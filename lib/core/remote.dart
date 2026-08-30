@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:fl_clash/common/common.dart';
 import 'package:fl_clash/enum/enum.dart';
 import 'package:fl_clash/models/core.dart';
 import 'package:fl_clash/models/models.dart';
+import 'package:flutter/services.dart';
 
+import 'event.dart';
 import 'interface.dart';
 
 const _iosCoreChannel = MethodChannel('com.follow.clash/ios_core');
@@ -21,7 +24,7 @@ class CoreRemoteService extends CoreHandlerInterface {
   Socket? _socket;
   final Map<String, Completer> _callbackCompleterMap = {};
   Completer<bool> _connectedCompleter = Completer();
-  String? _appGroupPath;
+  String? _appGroupPathCache;
   Timer? _statusTimer;
 
   CoreRemoteService._internal();
@@ -32,11 +35,12 @@ class CoreRemoteService extends CoreHandlerInterface {
   }
 
   Future<String> get _appGroupPath async {
-    if (_appGroupPath != null) {
-      return _appGroupPath!;
+    if (_appGroupPathCache != null) {
+      return _appGroupPathCache!;
     }
-    _appGroupPath = await _iosCoreChannel.invokeMethod<String>('appGroupPath');
-    return _appGroupPath!;
+    _appGroupPathCache =
+        await _iosCoreChannel.invokeMethod<String>('appGroupPath');
+    return _appGroupPathCache!;
   }
 
   /// Mirrors config + geo data into the app group container for the
@@ -107,7 +111,7 @@ class CoreRemoteService extends CoreHandlerInterface {
     }
   }
 
-  void _onData(Uint8List chunk) {
+  Future<void> _onData(Uint8List chunk) async {
     _buffer.addAll(chunk);
     while (true) {
       if (_buffer.length < 4) {
@@ -123,8 +127,8 @@ class CoreRemoteService extends CoreHandlerInterface {
       final data = utf8.decode(_buffer.sublist(4, 4 + length));
       _buffer.removeRange(0, 4 + length);
       try {
-        final json = data.trim().commonToJSON<dynamic>();
-        handleResult(ActionResult.fromJson(json));
+        final json = await data.trim().commonToJSON<dynamic>();
+        await handleResult(ActionResult.fromJson(json));
       } catch (e) {
         commonPrint.log('parse core data failed: $e', logLevel: LogLevel.error);
       }
@@ -136,7 +140,7 @@ class CoreRemoteService extends CoreHandlerInterface {
   Future<void> handleResult(ActionResult result) async {
     final completer = _callbackCompleterMap[result.id];
     final data = await parasResult(result);
-    if (result.id.isEmpty) {
+    if (result.id?.isEmpty == true) {
       coreEventManager.sendEvent(CoreEvent.fromJson(result.data));
       return;
     }
