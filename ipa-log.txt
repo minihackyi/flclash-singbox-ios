@@ -62,11 +62,28 @@ The following plugins do not support Swift Package Manager for ios:
   - rust_api
   - setup
 This will become an error in a future version of Flutter. Please contact the plugin maintainers to request Swift Package Manager adoption.
-Running pod install...                                           1,044ms
+Running pod install...                                             866ms
 Running Xcode build...                                          
-Xcode archive done.                                         57.2s
+Xcode archive done.                                         78.0s
 Failed to build iOS app
-Swift Compiler Error (Xcode): Value of type 'NWPath' has no member 'isUltraConstrained'
-/Users/runner/.pub-cache/hosted/pub.dev/connectivity_plus-7.2.0/ios/connectivity_plus/Sources/connectivity_plus/PathMonitorConnectivityProvider.swift:28:39
+════════════════════════════════════════════════════════════════════════════════
+Building a deployable iOS app requires a selected Development Team with a 
+Provisioning Profile. Please ensure that a Development Team is selected by:
+  1- Open the Flutter project's Xcode target with
+       open ios/Runner.xcworkspace
+  2- Select the 'Runner' project in the navigator then the 'Runner' target
+     in the project settings
+  3- Make sure a 'Development Team' is selected under Signing & Capabilities > Team. 
+     You may need to:
+         - Log in with your Apple ID in Xcode first
+         - Ensure you have a valid unique Bundle ID
+         - Register your device with your Apple Developer Account
+         - Let Xcode automatically provision a profile for your app
+  4- Build or run your project again
 
+For more information, please visit:
+  https://flutter.dev/to/ios-development-team
+
+Or run on an iOS simulator without code signing
+════════════════════════════════════════════════════════════════════════════════
 Encountered error while archiving for device.
