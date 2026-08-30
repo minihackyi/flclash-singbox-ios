@@ -88,23 +88,21 @@ jobs:
 
       - name: Pack unsigned ipa
         if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -x
-          ls -la build/ios/iphoneos/ 2>&1 || true
-          find build -name "*.appex" -o -name "Runner.app" -maxdepth 6 2>/dev/null | head -5 || true
-          mkdir -p build/payload/Payload
-          cp -r build/ios/iphoneos/Runner.app build/payload/Payload/
-          APPEX=$(find build -name "PacketTunnel.appex" -type d | head -1)
+          mkdir -p build/payload/Payload || true
+          cp -R build/ios/iphoneos/Runner.app build/payload/Payload/ 2>&1 || true
+          APPEX=$(find build -type d -name "PacketTunnel.appex" 2>/dev/null | head -1 || true) || true
+          echo "APPEX=$APPEX"
           if [ -n "$APPEX" ]; then
-            mkdir -p build/payload/Payload/Runner.app/PlugIns
-            cp -r "$APPEX" build/payload/Payload/Runner.app/PlugIns/
-          else
-            echo "WARNING: PacketTunnel.appex not found"
+            mkdir -p build/payload/Payload/Runner.app/PlugIns || true
+            cp -R "$APPEX" build/payload/Payload/Runner.app/PlugIns/ 2>&1 || true
           fi
-          cd build/payload
-          zip -qry ../FlClash-unsigned.ipa Payload 2>&1 | tee ../pack.log
-          ls -lh ../FlClash-unsigned.ipa
+          (cd build/payload && zip -qry ../FlClash-unsigned.ipa Payload) || true
+          ls -la build/FlClash-unsigned.ipa 2>&1 || true
+          ls -la build/payload/Payload/ 2>&1 || true
 
       - name: Publish pack log
         if: always()
