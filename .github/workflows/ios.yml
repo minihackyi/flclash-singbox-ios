@@ -69,7 +69,7 @@ jobs:
         if: failure()
         shell: bash
         run: |
-          tail -c 200000 ipa_build.log > ipa-log.txt || true
+          tail -c 3000000 ipa_build.log > ipa-log.txt || true
           git config user.name "ci-bot"
           git config user.email "ci-bot.noreply.github.com"
           git add ipa-log.txt
