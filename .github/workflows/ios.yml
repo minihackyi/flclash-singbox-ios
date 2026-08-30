@@ -54,7 +54,21 @@ jobs:
           git push || true
 
       - name: Build ipa (no codesign)
-        run: flutter build ipa --release --no-codesign
+        shell: bash
+        run: |
+          set -o pipefail
+          flutter build ipa --release --no-codesign 2>&1 | tee ipa_build.log
+
+      - name: Publish ipa build log to repo
+        if: failure()
+        shell: bash
+        run: |
+          tail -c 60000 ipa_build.log > ipa-log.txt || true
+          git config user.name "ci-bot"
+          git config user.email "ci-bot.noreply.github.com"
+          git add ipa-log.txt
+          git commit -m "ci: ipa build log [skip ci]" || true
+          git push || true
 
       - name: Pack unsigned ipa
         run: |
