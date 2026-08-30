@@ -143,8 +143,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         completionHandler()
     }
 
-    override func handleAppMessage(_ messageData: Data, completionHandler: @escaping ((Data?) -> Void)?) {
+    override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
         // App pings the extension for the current core port.
+        guard let completionHandler else { return }
         if let text = String(data: messageData, encoding: .utf8), text == "port" {
             let port = coreServerPort()
             completionHandler(String(port).data(using: .utf8))
