@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F200000000000000000000A /* PacketTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F100000000000000000000P1 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnEmbed, ); }; };
+		F200000000000000000000A /* PacketTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F10000000000000000000081 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnEmbed, ); }; };
 		F1000000000000000000000A /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000000000000F1 /* PacketTunnelProvider.swift */; };
 		F1000000000000000000000B /* libclash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F100000000000000000000F6 /* libclash.a */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
@@ -29,11 +29,11 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
-		F200000000000000000000X1 /* PBXContainerItemProxy */ = {
+		F20000000000000000000091 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F100000000000000000000T1;
+			remoteGlobalIDString = F10000000000000000000071;
 			remoteInfo = PacketTunnel;
 		};
 /* End PBXContainerItemProxy section */
@@ -86,7 +86,7 @@
 		F100000000000000000000F4 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		F100000000000000000000F5 /* PacketTunnel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PacketTunnel-Bridging-Header.h"; sourceTree = "<group>"; };
 		F100000000000000000000F6 /* libclash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = Libs/libclash.a; sourceTree = "<group>"; };
-		F100000000000000000000P1 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10000000000000000000081 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F100000000000000000000W1 /* Frameworks */ = {
+		F100000000000000000000B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,7 +325,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F100000000000000000000S1 /* Sources */ = {
+		F100000000000000000000A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -343,8 +343,8 @@
 		};
 		F200000000000000000000D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F100000000000000000000T1 /* PacketTunnel */;
-			targetProxy = F200000000000000000000X1 /* PBXContainerItemProxy */;
+			target = F10000000000000000000071 /* PacketTunnel */;
+			targetProxy = F20000000000000000000091 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -787,7 +787,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F100000000000000000000L1 /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
+		F100000000000000000000D1 /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F100000000000000000000C1 /* Debug */,
