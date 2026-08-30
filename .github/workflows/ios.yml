@@ -59,11 +59,11 @@ jobs:
           git commit -m "ci: core build log [skip ci]" || true
           git push || true
 
-      - name: Build ipa (no codesign)
+      - name: Build iOS app (unsigned)
         shell: bash
         run: |
           set -o pipefail
-          flutter build ipa --release --no-codesign 2>&1 | tee ipa_build.log
+          flutter build ios --release --no-codesign 2>&1 | tee ipa_build.log
 
       - name: Publish ipa build log to repo
         if: failure()
@@ -78,14 +78,14 @@ jobs:
 
       - name: Pack unsigned ipa
         run: |
-          cd build/ios/archive
-          mkdir -p Payload
-          cp -r Runner.xcarchive/Products/Applications/Runner.app Payload/
-          zip -qry FlClash-unsigned.ipa Payload
-          ls -lh FlClash-unsigned.ipa
+          mkdir -p build/payload/Payload
+          cp -r build/ios/iphoneos/Runner.app build/payload/Payload/
+          cd build/payload
+          zip -qry ../FlClash-unsigned.ipa Payload
+          ls -lh ../FlClash-unsigned.ipa
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: FlClash-ios-unsigned-ipa
-          path: build/ios/archive/FlClash-unsigned.ipa
+          path: build/FlClash-unsigned.ipa
